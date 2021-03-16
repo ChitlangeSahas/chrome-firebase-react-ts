@@ -8,7 +8,7 @@ import {ModristUser} from './types'
 
 const UserListItem = ({name}: ModristUser): JSX.Element => {
   return (
-    <ListItem>
+    <ListItem onClick={() => {}} button>
       <ListItemAvatar>
         <Avatar>
           <ImageIcon />

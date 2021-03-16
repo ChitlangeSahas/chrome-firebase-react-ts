@@ -57,9 +57,10 @@ export default function TabbedPage(): JSX.Element {
     setValue(newValue)
   }
 
-  const users: [ModristUser] = [{
-    name: 'Sahas chitlange'
-  }]
+  const users = [
+      {name: 'Sahas chitlange'},
+      {name: 'Sahas chitlange'}
+    ] as ModristUser[]
 
   return (
     <div className={classes.root} style={{height : '30rem'}}>

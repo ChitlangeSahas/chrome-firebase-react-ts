@@ -14,7 +14,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const UsersList = (props: {userList: [ModristUser]}): JSX.Element => {
+
+
+const UsersList = (props: {userList: ModristUser[]}): JSX.Element => {
   const classes = useStyles()
 
   const list =
