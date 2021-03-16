@@ -24,7 +24,10 @@
 			"ignores": ["modules"]
 		}],
 		"semi": ["error", "never"],
-		"quotes": ["error", "single"]
+		"quotes": ["error", "single"],
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/no-explicit-any": "off"
 	},
 	"env": {
 		"webextensions": true
