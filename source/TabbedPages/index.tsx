@@ -5,6 +5,8 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
+import UsersList from '../User/UsersList'
+import {ModristUser} from '../User/types'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -47,13 +49,17 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export default function TabbedPage() {
+export default function TabbedPage(): JSX.Element {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
   const handleChange = (_: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue)
   }
+
+  const users: [ModristUser] = [{
+    name: 'Sahas chitlange'
+  }]
 
   return (
     <div className={classes.root} style={{height : '30rem'}}>
@@ -73,7 +79,7 @@ export default function TabbedPage() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        <UsersList userList={users}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
