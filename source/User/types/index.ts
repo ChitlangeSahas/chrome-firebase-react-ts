@@ -1,3 +1,4 @@
 export type ModristUser = {
-  name: string
+  name: string,
+  userID: number
 }

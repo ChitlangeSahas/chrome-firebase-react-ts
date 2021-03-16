@@ -58,8 +58,8 @@ export default function TabbedPage(): JSX.Element {
   }
 
   const users = [
-      {name: 'Sahas chitlange'},
-      {name: 'Sahas chitlange'}
+      {name: 'Sahas chitlange', userID: 0},
+      {name: 'Sahas chitlange', userID: 1}
     ] as ModristUser[]
 
   return (

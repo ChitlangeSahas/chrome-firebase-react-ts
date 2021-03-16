@@ -23,7 +23,7 @@ const UsersList = (props: {userList: ModristUser[]}): JSX.Element => {
     <List className={classes.root}>
     {props.userList.map((user, index) => {
       return (
-        <UserListItem name={user.name} key={index} />
+        <UserListItem user={user} key={index} />
       )
     })
     }
