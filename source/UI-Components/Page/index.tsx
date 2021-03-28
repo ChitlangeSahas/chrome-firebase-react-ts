@@ -15,11 +15,11 @@ function Page(): JSX.Element{
   return (
     <>
       <Button onClick={onBack}>Back</Button>
-      <Typography variant={'h2'}>
-        From your Friday bullshitt
+      <Typography variant={'h4'}>
+        From your Friday bullshit
       </Typography>
 
-      <Typography variant={'h4'}>
+      <Typography variant={'h6'}>
         Individual Notes:
       </Typography>
 
