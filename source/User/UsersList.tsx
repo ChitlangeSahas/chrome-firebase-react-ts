@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 
-const UsersList = (props: {userList: ModristUser[], enableEdit: boolean}): JSX.Element => {
+const UsersList = (props: {userList: ModristUser[], enableEdit?: boolean}): JSX.Element => {
   const classes = useStyles()
   const {userList, enableEdit} = props
 
@@ -26,7 +26,7 @@ const UsersList = (props: {userList: ModristUser[], enableEdit: boolean}): JSX.E
     <List className={classes.root}>
     {userList.map((user, index) => {
       return (
-        <UserListItem user={user} key={index} enableEdit={enableEdit}/>
+        <UserListItem user={user} key={index} enableEdit={enableEdit ?? false}/>
       )
     })
     }
