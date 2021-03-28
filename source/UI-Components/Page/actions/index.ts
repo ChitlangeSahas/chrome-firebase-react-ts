@@ -1,3 +1,4 @@
+
 function onClose(): void{
   window.close()
 }

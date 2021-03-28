@@ -5,11 +5,11 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-import UsersList from '../../User/UsersList'
-import {ModristUser} from '../../User/types'
-import SearchBar from '../SearchBar'
 import {Button, Grid} from '@material-ui/core'
+import UsersList from '../../User/UsersList'
+import SearchBar from '../SearchBar'
 import onClose from '../Page/actions'
+import mockUsers from '../../mockData/mock'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -60,11 +60,6 @@ function TabbedPage(): JSX.Element {
     setValue(newValue)
   }
 
-  const users = [
-      {name: 'Sahas chitlange', userID: 0},
-      {name: 'Sahas chitlange', userID: 1}
-    ] as ModristUser[]
-
   return (
     <div className={classes.root} style={{height : '30rem'}}>
       <AppBar position="static" color="default">
@@ -84,7 +79,7 @@ function TabbedPage(): JSX.Element {
       </AppBar>
       <TabPanel value={value} index={0}>
         <SearchBar/>
-        <UsersList userList={users}/>
+        <UsersList userList={mockUsers}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
