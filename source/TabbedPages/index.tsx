@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import {makeStyles, Theme} from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import UsersList from '../User/UsersList'
 import {ModristUser} from '../User/types'
+import SearchBar from '../UI-Components/SearchBar'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -26,7 +27,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={0}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -46,10 +47,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,
-  },
+  }
 }))
 
-export default function TabbedPage(): JSX.Element {
+function TabbedPage(): JSX.Element {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
@@ -80,6 +81,7 @@ export default function TabbedPage(): JSX.Element {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
+        <SearchBar/>
         <UsersList userList={users}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -91,3 +93,5 @@ export default function TabbedPage(): JSX.Element {
     </div>
   )
 }
+
+export default TabbedPage
