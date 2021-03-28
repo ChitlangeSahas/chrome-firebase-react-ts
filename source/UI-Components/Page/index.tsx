@@ -1,30 +1,21 @@
 import React from 'react'
-import {Button} from '@material-ui/core'
-import Typography from '@material-ui/core/Typography'
-import {useHistory} from 'react-router-dom'
-import UsersList from '../../User/UsersList'
-import mockUsers from '../../mockData/mock'
+import {makeStyles, Theme} from '@material-ui/core/styles'
 
-function Page(): JSX.Element{
-  const history = useHistory()
-
-  const onBack = () => {
-    history.goBack()
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    height: '30rem'
   }
+}))
 
+function Page(props: {title?: string, children: JSX.Element[]}): JSX.Element {
+  const classes = useStyles()
+  const {children} = props
   return (
-    <>
-      <Button onClick={onBack}>Back</Button>
-      <Typography variant={'h4'}>
-        From your Friday bullshit
-      </Typography>
-
-      <Typography variant={'h6'}>
-        Individual Notes:
-      </Typography>
-
-      <UsersList userList={mockUsers} enableEdit={true}/>
-    </>
+    <div className={classes.root}>
+      {children}
+    </div>
   )
 }
 

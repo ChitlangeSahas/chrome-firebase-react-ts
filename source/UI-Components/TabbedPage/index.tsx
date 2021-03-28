@@ -1,5 +1,4 @@
 import React from 'react'
-import {makeStyles, Theme} from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
@@ -8,8 +7,9 @@ import Box from '@material-ui/core/Box'
 import {Button, Grid} from '@material-ui/core'
 import UsersList from '../../User/UsersList'
 import SearchBar from '../SearchBar'
-import onClose from '../Page/actions'
+import onClose from '../PromptPage/actions'
 import mockUsers from '../../mockData/mock'
+import Page from '../Page'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -44,16 +44,7 @@ function a11yProps(index: any) {
   }
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    flexGrow: 1,
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
-  }
-}))
-
 function TabbedPage(): JSX.Element {
-  const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
   const handleChange = (_: React.ChangeEvent<{}>, newValue: number) => {
@@ -61,7 +52,7 @@ function TabbedPage(): JSX.Element {
   }
 
   return (
-    <div className={classes.root} style={{height : '30rem'}}>
+    <Page>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -95,7 +86,7 @@ function TabbedPage(): JSX.Element {
         </Box>
       </Grid>
 
-    </div>
+    </Page>
   )
 }
 

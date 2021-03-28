@@ -1,15 +1,13 @@
 import React from 'react'
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import {ModristUser} from './types'
 import UserListItem from './UserListItem'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
       overflow: 'auto',
       maxHeight: 400,
     },

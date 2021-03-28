@@ -4,16 +4,18 @@ import {MemoryRouter as Router, Route, Switch} from 'react-router-dom'
 import './styles.scss'
 import '../firebase'
 import TabbedPage from '../UI-Components/TabbedPage'
-import Page from '../UI-Components/Page'
+import PromptPage from '../UI-Components/PromptPage'
 
 const Popup: React.FC = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path={'/user/:userID'} component={Page}/>
-        <Route component={TabbedPage} exact/>
-      </Switch>
-    </Router>
+    <div style={{width: '300px'}}>
+      <Router>
+        <Switch>
+          <Route path={'/user/:userID'} component={PromptPage}/>
+          <Route component={TabbedPage} exact/>
+        </Switch>
+      </Router>
+    </div>
 )
 }
 
