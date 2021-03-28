@@ -45,9 +45,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 }))
 
-function SearchBar(): JSX.Element {
+function SearchBar(props: {placeholder?: string}): JSX.Element {
 
   const classes = useStyles()
+  const {placeholder} = props
 
   return (
     <div className={classes.search}>
@@ -55,7 +56,7 @@ function SearchBar(): JSX.Element {
       <SearchIcon />
     </div>
     <InputBase
-      placeholder="Search…"
+      placeholder={placeholder || 'Search my contacts'}
       classes={{
         root: classes.inputRoot,
         input: classes.inputInput,

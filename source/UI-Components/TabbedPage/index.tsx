@@ -5,9 +5,10 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-import UsersList from '../User/UsersList'
-import {ModristUser} from '../User/types'
-import SearchBar from '../UI-Components/SearchBar'
+import UsersList from '../../User/UsersList'
+import {ModristUser} from '../../User/types'
+import SearchBar from '../SearchBar'
+import {Button, Grid} from '@material-ui/core'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -90,6 +91,14 @@ function TabbedPage(): JSX.Element {
       <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
+
+      <Grid>
+        <Box>
+          <Button>Close</Button>
+          <Button>Go to Modrist</Button>
+        </Box>
+      </Grid>
+
     </div>
   )
 }

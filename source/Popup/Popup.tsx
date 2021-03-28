@@ -3,7 +3,7 @@ import {MemoryRouter as Router, Route, Switch} from 'react-router-dom'
 
 import './styles.scss'
 import '../firebase'
-import TabbedPage from '../TabbedPages'
+import TabbedPage from '../UI-Components/TabbedPage'
 import UserInfoPage from '../User/UserInfoPage'
 
 const Popup: React.FC = () => {

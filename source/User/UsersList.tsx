@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       maxWidth: 360,
       backgroundColor: theme.palette.background.paper,
+      overflow: 'auto',
+      maxHeight: 400,
     },
   }),
 )
@@ -23,7 +25,7 @@ const UsersList = (props: {userList: ModristUser[]}): JSX.Element => {
     <List className={classes.root}>
     {props.userList.map((user, index) => {
       return (
-        <UserListItem user={user} key={index} />
+        <UserListItem user={user} key={index} enableEdit={false} />
       )
     })
     }
