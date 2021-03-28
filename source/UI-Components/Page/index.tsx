@@ -23,7 +23,7 @@ function Page(): JSX.Element{
         Individual Notes:
       </Typography>
 
-      <UsersList userList={mockUsers}/>
+      <UsersList userList={mockUsers} enableEdit={true}/>
     </>
   )
 }
