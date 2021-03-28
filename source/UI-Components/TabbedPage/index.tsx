@@ -9,6 +9,7 @@ import UsersList from '../../User/UsersList'
 import {ModristUser} from '../../User/types'
 import SearchBar from '../SearchBar'
 import {Button, Grid} from '@material-ui/core'
+import onClose from '../Page/actions'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -94,8 +95,8 @@ function TabbedPage(): JSX.Element {
 
       <Grid>
         <Box>
-          <Button>Close</Button>
-          <Button>Go to Modrist</Button>
+          <Button onClick={onClose}>Close</Button>
+          <Button >Go to Modrist</Button>
         </Box>
       </Grid>
 
