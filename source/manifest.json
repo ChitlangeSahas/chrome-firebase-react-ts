@@ -14,13 +14,22 @@
   "short_name": "Sample Name",
 
   "permissions": [
+    "identity",
     "activeTab",
     "storage",
     "http://*/*",
     "https://*/*"
   ],
 
-  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'",
+
+  "oauth2": {
+    "client_id":"327763168215-vco7rjv174tn96slbqpmlf200df93oef.apps.googleusercontent.com" ,
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  },
 
   "__chrome|firefox__author": "abhijithvijayan",
   "__opera__developer": {

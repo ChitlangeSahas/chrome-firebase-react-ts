@@ -33,6 +33,7 @@
     "advanced-css-reset": "^1.2.2",
     "emoji-log": "^1.0.2",
     "firebase": "^8.3.0",
+    "googleapis": "^70.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",

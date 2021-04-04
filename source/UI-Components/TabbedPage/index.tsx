@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
@@ -10,6 +10,11 @@ import SearchBar from '../SearchBar'
 import onClose from '../PromptPage/actions'
 import mockUsers from '../../mockData/mock'
 import Page from '../Page'
+import { UserContext } from '../../providers/UserProvider'
+import firebase from 'firebase'
+import {signInWithGoogle} from '../../firebase'
+
+
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -51,6 +56,9 @@ function TabbedPage(): JSX.Element {
     setValue(newValue)
   }
 
+  const {userName} = useContext(UserContext)
+  const {userEmail} = useContext(UserContext)
+
   return (
     <Page>
       <AppBar position="static" color="default">
@@ -83,8 +91,27 @@ function TabbedPage(): JSX.Element {
         <Box>
           <Button onClick={onClose}>Close</Button>
           <Button >Go to Modrist</Button>
+          <Button onClick={() => {
+            firebase.auth().signOut()
+            console.log('User logged out.')
+          }}
+          >
+            Sign out
+          </Button>
+          <Button onClick={() => {
+            signInWithGoogle()
+          }}
+          >
+            Sign in with Google
+          </Button>
         </Box>
       </Grid>
+      <Typography variant={'h6'}>
+        Display Name: {userName}
+      </Typography>
+      <Typography variant={'h6'}>
+        Email: {userEmail}
+      </Typography>
 
     </Page>
   )
