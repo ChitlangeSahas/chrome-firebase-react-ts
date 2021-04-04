@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
@@ -11,6 +11,7 @@ import {ModristUser} from './types'
 
 const UserListItem = (props: {user: ModristUser, enableEdit?: boolean}): JSX.Element => {
   const {user : {name, userID}, enableEdit} = props
+  const [showUserNotes, setShowUserNotes] = useState(false)
   const history = useHistory()
 
   const handleClick = () => {
@@ -18,21 +19,26 @@ const UserListItem = (props: {user: ModristUser, enableEdit?: boolean}): JSX.Ele
       history.push(`/user/${userID}`)
   }
   return (
-    <ListItem onClick={handleClick} button>
-      <ListItemAvatar>
-        <Avatar>
-          <ImageIcon />
-        </Avatar>
-      </ListItemAvatar>
-      <ListItemText primary={name} secondary={'description'} />
-      {enableEdit && <ListItemSecondaryAction>
-        <IconButton onClick={() => {
-          // Todo: implement onclick behavior here
-        }}>
-          <EditIcon/>
-        </IconButton>
-      </ListItemSecondaryAction>}
-    </ListItem>
+      <ListItem onClick={handleClick} button>
+        <ListItemAvatar>
+          <Avatar>
+            <ImageIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText
+          primary={name}
+          secondary={'example@email.com'} />
+        {enableEdit &&
+        <ListItemSecondaryAction>
+          <IconButton onClick={() => {
+            // Todo: implement onclick behavior here
+            setShowUserNotes(!showUserNotes)
+          }}>
+            <EditIcon/>
+          </IconButton>
+        </ListItemSecondaryAction>
+        }
+      </ListItem>
   )
 }
 
