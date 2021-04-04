@@ -3,7 +3,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import ImageIcon from '@material-ui/icons/Image'
-import {Collapse, ListItem, ListItemSecondaryAction, TextareaAutosize} from '@material-ui/core'
+import {Collapse, ListItem, ListItemSecondaryAction, TextField} from '@material-ui/core'
 import {useHistory} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
 import EditIcon from '@material-ui/icons/Edit'
@@ -41,7 +41,13 @@ const UserListItem = (props: {user: ModristUser, enableEdit?: boolean}): JSX.Ele
         }
       </ListItem>
       <Collapse in={showUserNotes}>
-        <TextareaAutosize/>
+        <TextField
+          id="outlined-multiline-static"
+          label=""
+          multiline
+          rows={3}
+          variant="outlined"
+        />
       </Collapse>
     </>
 
