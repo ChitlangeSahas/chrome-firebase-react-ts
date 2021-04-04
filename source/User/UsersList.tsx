@@ -22,7 +22,9 @@ const UsersList = (props: {userList: ModristUser[], enableEdit?: boolean}): JSX.
     <List className={classes.root}>
     {userList.map((user, index) => {
       return (
-        <UserListItem user={user} key={index} enableEdit={enableEdit ?? false}/>
+        <span key={index}>
+          <UserListItem user={user} key={index} enableEdit={enableEdit ?? false}/>
+        </span>
       )
     })
     }
