@@ -21,17 +21,15 @@ export const auth = firebase.auth()
 export const firestore = firebase.firestore()
 
 export const signInWithGoogle = () => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  chrome.identity.getAuthToken( (token: string) => {
+  chrome.identity.getAuthToken({'interactive':true},(token: string) => {
     if(chrome.runtime.lastError){
       console.log('It was not possible to get a token programmatically.')
     } else {
       // eslint-disable-next-line no-lonely-if
       if(chrome.runtime.lastError){
         console.error(chrome.runtime.lastError)
-          } else if(token){
-            const credential = firebase.auth.GoogleAuthProvider.credential(null, )
+      } else if(token){
+            const credential = firebase.auth.GoogleAuthProvider.credential(null, token)
             firebase.auth().signInWithCredential(credential).catch((error)=>{
               if(error.code === 'auth/invalid-credential'){
                 chrome.identity.removeCachedAuthToken({token}, ()=>{
@@ -39,7 +37,7 @@ export const signInWithGoogle = () => {
                 })
               }
             })
-          } else{
+      } else{
         console.error('The OAuth Token was null')
       }
     }

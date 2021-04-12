@@ -13,9 +13,11 @@ class UserProvider extends Component{
   componentDidMount = async () => {
     auth.onAuthStateChanged((userAuth: any) => {
       // eslint-disable-next-line react/no-set-state
-      this.setState({userName: userAuth.displayName, userEmail: userAuth.email})
-      console.log(userAuth.email)
-      console.log(userAuth.displayName)
+      if(userAuth) {
+        this.setState({userName: userAuth.displayName, userEmail: userAuth.email})
+        console.log(userAuth.email)
+        console.log(userAuth.displayName)
+      }
     })
   }
 
