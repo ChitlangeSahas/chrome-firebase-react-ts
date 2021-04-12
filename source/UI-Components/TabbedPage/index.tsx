@@ -11,8 +11,7 @@ import onClose from '../PromptPage/actions'
 import mockUsers from '../../mockData/mock'
 import Page from '../Page'
 import { UserContext } from '../../providers/UserProvider'
-import firebase from 'firebase'
-import {signInWithGoogle} from '../../firebase'
+import firebase, {signInWithGoogle} from '../../firebase'
 
 
 
