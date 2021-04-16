@@ -1,6 +1,7 @@
 import {browser} from 'webextension-polyfill-ts'
 import firebase, {firestore} from '../firebase'
 import {getCalendar} from './getcalendar'
+import {getContacts} from './getcontacts'
 
 function scheduleRequest() {
   console.log('schedule refresh alarm to 30 minutes...')
@@ -22,22 +23,8 @@ async function startRequest() {
         user: userEmail,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
-      await getCalendar(userEmail).then((eventsString) => {
-          console.log('eventsString\n', eventsString)
-          const events = JSON.parse(eventsString)
-          console.log('events\n', events)
-          /* for (const event of events) {
-            firestore.collection(`/Users/${userEmail}/Meetings`).add({
-              title: event.title,
-              meetingId: event.meetingId,
-              updated: new Date(event.updated),
-              attendees: event.attendees,
-              start: new Date(event.start),
-              end: new Date(event.end)
-            })
-          } */
-        }
-      )
+      await getCalendar(userEmail)
+      getContacts(userEmail)
 
     }
   })
