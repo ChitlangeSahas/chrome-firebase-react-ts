@@ -1,5 +1,6 @@
 import {browser} from 'webextension-polyfill-ts'
 import firebase, {firestore} from '../firebase'
+import {getCalendar} from './getcalendar'
 
 function scheduleRequest() {
   console.log('schedule refresh alarm to 30 minutes...')
@@ -12,18 +13,32 @@ function scheduleWatchdog() {
 }
 
 async function startRequest() {
-  console.log('start HTTP Request...')
-  // const data = await fetchRepositories();
-  // saveToLocalStorage(data);
-  chrome.identity.getProfileUserInfo(userInfo => {
+  chrome.identity.getProfileUserInfo(async userInfo => {
     const userEmail = userInfo.email
     console.log('User is', userEmail)
     if(userEmail != null) {
-      console.log('Pushing data for', userEmail)
-      firestore.collection('test1').add({
+      console.log('Pushing test data for', userEmail)
+      await firestore.collection('test1').add({
         user: userEmail,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
+      await getCalendar(userEmail).then((eventsString) => {
+          console.log('eventsString\n', eventsString)
+          const events = JSON.parse(eventsString)
+          console.log('events\n', events)
+          /* for (const event of events) {
+            firestore.collection(`/Users/${userEmail}/Meetings`).add({
+              title: event.title,
+              meetingId: event.meetingId,
+              updated: new Date(event.updated),
+              attendees: event.attendees,
+              start: new Date(event.start),
+              end: new Date(event.end)
+            })
+          } */
+        }
+      )
+
     }
   })
 }
