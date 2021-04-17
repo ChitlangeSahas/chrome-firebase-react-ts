@@ -23,8 +23,9 @@ async function startRequest() {
         user: userEmail,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
+      await getContacts(userEmail)
       await getCalendar(userEmail)
-      getContacts(userEmail)
+
 
     }
   })
