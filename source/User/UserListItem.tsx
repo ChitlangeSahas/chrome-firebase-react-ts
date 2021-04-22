@@ -28,7 +28,7 @@ const UserListItem = (props: {user: ModristUser, enableEdit?: boolean}): JSX.Ele
         </ListItemAvatar>
         <ListItemText
           primary={name}
-          secondary={'example@email.com'} />
+          secondary={userID} />
         {enableEdit &&
         <ListItemSecondaryAction>
           <IconButton onClick={() => {

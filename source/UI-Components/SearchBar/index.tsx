@@ -1,8 +1,9 @@
 import SearchIcon from '@material-ui/icons/Search'
 import {InputBase} from '@material-ui/core'
-import React from 'react'
+import React, {useContext} from 'react'
 import {fade, makeStyles, Theme} from '@material-ui/core/styles'
-
+import {getFireBaseContacts} from '../../User/getUserSearch'
+import { UserContext } from '../../providers/UserProvider'
 
 const useStyles = makeStyles((theme: Theme) => ({
     search: {
@@ -46,15 +47,17 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 function SearchBar(props: {placeholder?: string}): JSX.Element {
-
+  let inputValue = ''
   const classes = useStyles()
   const {placeholder} = props
+  const {userEmail} = useContext(UserContext)
+
 
   return (
     <div className={classes.search}>
-    <div className={classes.searchIcon}>
-      <SearchIcon />
-    </div>
+      <div className={classes.searchIcon}>
+        <SearchIcon />
+      </div>
     <InputBase
       placeholder={placeholder || 'Search my contacts'}
       classes={{
@@ -62,6 +65,17 @@ function SearchBar(props: {placeholder?: string}): JSX.Element {
         input: classes.inputInput,
       }}
       inputProps={{ 'aria-label': 'search' }}
+      onChange={e=>{
+        inputValue = e.target.value
+      }}
+      onKeyPress={
+        async (e) => {
+          if (e.key === 'Enter') {
+            // add function to update user list
+            await getFireBaseContacts(userEmail, inputValue)
+          }
+        }
+      }
     />
   </div>)
 }

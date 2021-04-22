@@ -8,10 +8,10 @@ import {Button, Grid} from '@material-ui/core'
 import UsersList from '../../User/UsersList'
 import SearchBar from '../SearchBar'
 import onClose from '../PromptPage/actions'
-import mockUsers from '../../mockData/mock'
+import ContactList from '../../User/getUserSearch'
 import Page from '../Page'
 import { UserContext } from '../../providers/UserProvider'
-import firebase, {signInWithGoogle} from '../../firebase'
+// import firebase, {signInWithGoogle} from '../../firebase'
 
 
 
@@ -56,7 +56,7 @@ function TabbedPage(): JSX.Element {
   }
 
   const {userName} = useContext(UserContext)
-  const {userEmail} = useContext(UserContext)
+  // const {userEmail} = useContext(UserContext)
 
   return (
     <Page>
@@ -70,17 +70,16 @@ function TabbedPage(): JSX.Element {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="My contacts" {...a11yProps(0)} />
-          <Tab label="My meetings" {...a11yProps(1)} />
-          <Tab label="Save for later" {...a11yProps(2)} />
+          <Tab label="Snoozed Notes" {...a11yProps(0)} />
+          <Tab label="My Contacts" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <SearchBar/>
-        <UsersList userList={mockUsers}/>
+        Events
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <SearchBar/>
+        <UsersList userList={ContactList}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
@@ -88,30 +87,13 @@ function TabbedPage(): JSX.Element {
 
       <Grid>
         <Box>
-          <Button onClick={onClose}>Close</Button>
+          <Button onClick={onClose}>   Close   </Button>
           <Button >Go to Modrist</Button>
-          <Button onClick={() => {
-            firebase.auth().signOut()
-            console.log('User logged out.')
-          }}
-          >
-            Sign out
-          </Button>
-          <Button onClick={() => {
-            signInWithGoogle()
-          }}
-          >
-            Sign in with Google
-          </Button>
         </Box>
       </Grid>
-      <Typography variant={'h6'}>
-        Display Name: {userName}
+      <Typography variant={'subtitle1'}>
+        Currently signed in as {userName}
       </Typography>
-      <Typography variant={'h6'}>
-        Email: {userEmail}
-      </Typography>
-
     </Page>
   )
 }
